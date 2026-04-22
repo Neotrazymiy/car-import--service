@@ -1,0 +1,1025 @@
+{
+	"openapi": "3.0.1",
+	"servers": [
+		{
+			"url": "http://localhost:8080",
+			"description": "Generated server url"
+		}
+	],
+	"security": [
+		{
+			"bearerAuth": []
+		}
+	],
+	"tags": [
+		{
+			"name": "findByFilter",
+			"description": "Find car by filter"
+		},
+		{
+			"name": "findById",
+			"description": "Find car by id"
+		},
+		{
+			"name": "create",
+			"description": "Create car"
+		},
+		{
+			"name": "update",
+			"description": "Update car"
+		},
+		{
+			"name": "delete",
+			"description": "Delete car"
+		},
+		{
+			"name": "import",
+			"description": "Import csv file cars"
+		}
+	],
+	"paths": {
+		"/api/v1/makes/{id}": {
+			"get": {
+				"tags": [
+					"make-rest-controller"
+				],
+				"summary": "Find make by id",
+				"operationId": "giveById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Make not found.",
+						"content": {}
+					},
+					"200": {
+						"description": "Found the make"
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/MakeRequestDto"
+								}
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"make-rest-controller"
+				],
+				"summary": "Update make",
+				"operationId": "update",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MakeRequestDto"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"201": {
+						"description": "The make was update successfully"
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"403": {
+						"description": "You do not have permission to make this request."
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/MakeRequestDto"
+								}
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"make-rest-controller"
+				],
+				"summary": "Delete make",
+				"operationId": "delete",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Make not found.",
+						"content": {}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"204": {
+						"description": "Operation successful"
+					},
+					"403": {
+						"description": "You do not have permission to make this request."
+					}
+				}
+			}
+		},
+		"/api/v1/categorys/{id}": {
+			"get": {
+				"tags": [
+					"category-rest-controller"
+				],
+				"summary": "Find category by id",
+				"operationId": "giveById_1",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Category not found.",
+						"content": {}
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CategoryRequestDto"
+								}
+							}
+						}
+					},
+					"200": {
+						"description": "Found the category"
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"category-rest-controller"
+				],
+				"summary": "Update categorys",
+				"operationId": "update_1",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CategoryRequestDto"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"403": {
+						"description": "You do not have permission to categorys this request."
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CategoryRequestDto"
+								}
+							}
+						}
+					},
+					"201": {
+						"description": "The categorys was update successfully"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"category-rest-controller"
+				],
+				"summary": "Delete categorys",
+				"operationId": "delete_1",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Categorys not found.",
+						"content": {}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"403": {
+						"description": "You do not have permission to categorys this request."
+					},
+					"204": {
+						"description": "Operation successful"
+					}
+				}
+			}
+		},
+		"/api/v1/cars/{id}": {
+			"get": {
+				"tags": [
+					"findById"
+				],
+				"summary": "Find car by id",
+				"operationId": "giveById_2",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "car not found.",
+						"content": {}
+					},
+					"200": {
+						"description": "Found the car"
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CarRequestDto"
+								}
+							}
+						}
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"update"
+				],
+				"summary": "Update car",
+				"operationId": "update_2",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CarRequestDto"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"201": {
+						"description": "The car was update successfully"
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CarRequestDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "You do not have permission to car this request."
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"delete"
+				],
+				"summary": "Delete car",
+				"operationId": "deleteById",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"format": "uuid"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Car not found.",
+						"content": {}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"204": {
+						"description": "Operation successful"
+					},
+					"403": {
+						"description": "You do not have permission to car this request."
+					}
+				}
+			}
+		},
+		"/api/v1/makes": {
+			"get": {
+				"tags": [
+					"make-rest-controller"
+				],
+				"summary": "Find all makes",
+				"operationId": "giveAllPageMakes",
+				"parameters": [
+					{
+						"name": "pageable",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Pageable"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Makes not found.",
+						"content": {}
+					},
+					"200": {
+						"description": "Found the makes"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"make-rest-controller"
+				],
+				"summary": "Create make",
+				"operationId": "create",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MakeRequestDto"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"409": {
+						"description": "The data already exists",
+						"content": {}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"201": {
+						"description": "The make was created successfully"
+					},
+					"403": {
+						"description": "You do not have permission to make this request."
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/MakeRequestDto"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/api/v1/categorys": {
+			"get": {
+				"tags": [
+					"category-rest-controller"
+				],
+				"summary": "Find all categorys",
+				"operationId": "giveAllPageCategorys",
+				"parameters": [
+					{
+						"name": "pageable",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Pageable"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Categorys not found.",
+						"content": {}
+					},
+					"200": {
+						"description": "Found the categorys"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"category-rest-controller"
+				],
+				"summary": "Create category",
+				"operationId": "create_1",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CategoryRequestDto"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"409": {
+						"description": "The data already exists",
+						"content": {}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"201": {
+						"description": "The category was created successfully"
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CategoryRequestDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "You do not have permission to category this request."
+					}
+				}
+			}
+		},
+		"/api/v1/cars": {
+			"get": {
+				"tags": [
+					"findByFilter"
+				],
+				"summary": "Find cars by filter",
+				"operationId": "giveAllPageFilterCar",
+				"parameters": [
+					{
+						"name": "pageable",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/Pageable"
+						}
+					},
+					{
+						"name": "dto",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"$ref": "#/components/schemas/CarFilterRequestDto"
+						}
+					}
+				],
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Cars not found.",
+						"content": {}
+					},
+					"200": {
+						"description": "Found the cars"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"create"
+				],
+				"summary": "Create car",
+				"operationId": "create_2",
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CarRequestDto"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"409": {
+						"description": "The data already exists",
+						"content": {}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"400": {
+						"description": "The data does not match the pattern",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/CarRequestDto"
+								}
+							}
+						}
+					},
+					"403": {
+						"description": "You do not have permission to car this request."
+					},
+					"201": {
+						"description": "The car was created successfully"
+					}
+				}
+			}
+		},
+		"/api/v1/cars/import/csv": {
+			"post": {
+				"tags": [
+					"import"
+				],
+				"summary": "Import cars from csv file",
+				"operationId": "importCsv",
+				"requestBody": {
+					"content": {
+						"multipart/form-data": {
+							"schema": {
+								"required": [
+									"file"
+								],
+								"type": "object",
+								"properties": {
+									"file": {
+										"type": "string",
+										"format": "binary"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"409": {
+						"description": "Conflict",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"content": {
+							"*/*": {
+								"schema": {
+									"$ref": "#/components/schemas/ApiError"
+								}
+							}
+						}
+					},
+					"202": {
+						"description": "Import running in background"
+					},
+					"401": {
+						"description": "Please log in to continue."
+					},
+					"415": {
+						"description": "Invalid file format"
+					},
+					"200": {
+						"description": "Import successful"
+					},
+					"400": {
+						"description": "Еhe data is not valid"
+					},
+					"413": {
+						"description": "File size exceeded"
+					},
+					"500": {
+						"description": "There is an error in the code that saves this file."
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"ApiError": {
+				"type": "object"
+			},
+			"MakeRequestDto": {
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"properties": {
+					"name": {
+						"maxLength": 30,
+						"minLength": 3,
+						"pattern": "^[A-Z][A-Za-z-]{2,14}(?: [A-Z][A-Za-z-]{2,14})?$",
+						"type": "string",
+						"description": "Make",
+						"example": "Daewoo"
+					}
+				}
+			},
+			"CategoryRequestDto": {
+				"required": [
+					"name"
+				],
+				"type": "object",
+				"properties": {
+					"name": {
+						"maxLength": 15,
+						"minLength": 3,
+						"pattern": "^[A-Z][A-Za-z/]{2,14}$",
+						"type": "string",
+						"description": "Categorys",
+						"example": "Sedan"
+					}
+				}
+			},
+			"CarRequestDto": {
+				"required": [
+					"makeName",
+					"model",
+					"year"
+				],
+				"type": "object",
+				"properties": {
+					"model": {
+						"maxLength": 60,
+						"minLength": 0,
+						"pattern": "^[A-Z0-9][A-Za-z0-9-]{0,19}(?: [A-Z0-9][A-Za-z0-9-]{0,19}){0,2}$",
+						"type": "string",
+						"description": "Car model",
+						"example": "Lanos"
+					},
+					"year": {
+						"maximum": 2026,
+						"minimum": 1960,
+						"type": "integer",
+						"description": "Year",
+						"format": "int32",
+						"example": 2020
+					},
+					"makeName": {
+						"maxLength": 30,
+						"minLength": 3,
+						"pattern": "^[A-Z][A-Za-z-]{2,14}(?: [A-Z][A-Za-z-]{2,14})?$",
+						"type": "string",
+						"description": "Make name",
+						"example": "Daewoo"
+					},
+					"categoryName": {
+						"maxLength": 60,
+						"minLength": 3,
+						"pattern": "^[A-Z][A-Za-z\\/,]{2,14}(?: [A-Z][A-Za-z\\/,]{2,14}){0,3}$",
+						"type": "string",
+						"description": "Category name",
+						"example": "Sedan"
+					}
+				}
+			},
+			"Pageable": {
+				"type": "object",
+				"properties": {
+					"page": {
+						"minimum": 0,
+						"type": "integer",
+						"format": "int32"
+					},
+					"size": {
+						"minimum": 1,
+						"type": "integer",
+						"format": "int32"
+					},
+					"sort": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"CarFilterRequestDto": {
+				"type": "object",
+				"properties": {
+					"model": {
+						"maxLength": 60,
+						"minLength": 1,
+						"pattern": "^[A-Z0-9][A-Za-z0-9-]{0,19}(?: [A-Z0-9][A-Za-z0-9-]{0,19}){0,2}$",
+						"type": "string",
+						"description": "Car model",
+						"example": "Lanos"
+					},
+					"makeName": {
+						"maxLength": 30,
+						"minLength": 3,
+						"pattern": "^[A-Z][A-Za-z-]{2,14}(?: [A-Z][A-Za-z-]{2,14})?$",
+						"type": "string",
+						"description": "Make name",
+						"example": "Daewoo"
+					},
+					"minYear": {
+						"minimum": 1960,
+						"type": "integer",
+						"description": "Minimum year",
+						"format": "int32",
+						"example": 2000
+					},
+					"maxYear": {
+						"maximum": 2026,
+						"type": "integer",
+						"description": "Maximum year",
+						"format": "int32",
+						"example": 2020
+					},
+					"categoryName": {
+						"maxLength": 60,
+						"minLength": 3,
+						"pattern": "^[A-Z][A-Za-z\\/,]{2,14}(?: [A-Z][A-Za-z\\/,]{2,14}){0,3}$",
+						"type": "string",
+						"description": "Category name",
+						"example": "Sedan"
+					}
+				}
+			}
+		},
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	}
+}

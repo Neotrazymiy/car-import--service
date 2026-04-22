@@ -1,0 +1,33 @@
+CREATE TABLE IF NOT EXISTS make (
+	id UUID PRIMARY KEY,
+	code VARCHAR(250) UNIQUE,
+	name VARCHAR(50) UNIQUE NOT NULL	
+);
+
+CREATE TABLE IF NOT EXISTS category (
+	id UUID PRIMARY KEY,
+	code VARCHAR(250) UNIQUE,
+	name VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS car (
+	id UUID PRIMARY KEY,
+	make_id UUID NOT NULL,
+	code VARCHAR(250) UNIQUE,
+	model VARCHAR(50) UNIQUE NOT NULL,
+	year INTEGER NOT NULL,
+	CONSTRAINT fk_car_make FOREIGN KEY (make_id) REFERENCES make (id)
+);
+
+CREATE TABLE IF NOT EXISTS car_category (
+	car_id UUID NOT NULL,
+	category_id UUID NOT NULL,
+	PRIMARY KEY(car_id, category_id),
+	CONSTRAINT fk_car_category_car FOREIGN KEY (car_id) REFERENCES car (id),
+	CONSTRAINT fk_car_category_make FOREIGN KEY (category_id) REFERENCES category (id)
+);
+
+DROP TABLE car_category;
+DROP TABLE car;
+DROP TABLE make;
+DROP TABLE category;

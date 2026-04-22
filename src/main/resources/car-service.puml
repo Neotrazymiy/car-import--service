@@ -1,0 +1,31 @@
+@startuml
+title - Car Import Service - Class Diagram
+
+' =========== Entities =============
+
+class Car {
+	+id: UUID
+	+model: String
+	+year: Integer
+	+make: Make
+	+categorys: List<Category>
+}
+
+class Make {
+	+id: UUID
+	+name: String
+	+cars: List<Car>
+}
+
+class Category {
+	+id: UUID
+	+name: String
+	+cars: List<Car>
+}
+
+' ============ RelationShips ============
+
+Car "*" -- "*" Category
+Car "*" -- "1" Make
+
+@enduml

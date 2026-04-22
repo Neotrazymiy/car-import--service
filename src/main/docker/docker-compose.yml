@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: ../../..
+      dockerfile: src/main/docker/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/car_db
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+      - AUTH0_DOMAIN=dev-jong73ydto8337z2.us.auth0.com
+      - AUTH0_AUDIENCE=https://menu-api.example.com
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=car_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
