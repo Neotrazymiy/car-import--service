@@ -36,8 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeHttpRequests().antMatchers(HttpMethod.GET, "/api/**").permitAll()
 				.antMatchers("/webjars/**", "/login*", "/css/**", "/js/**", "/swagger-ui.html", "/swagger-ui/**",
 						"/v3/api-docs/**")
-				.permitAll().and();
-			//.oauth2ResourceServer().jwt().decoder(jwtDecoder());
+				.permitAll();
+		//	.and().oauth2ResourceServer().jwt().decoder(jwtDecoder());
 	}
 
 	// @Bean
