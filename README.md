@@ -37,10 +37,11 @@ GET /api/v1/makes
 2. Find car by id:
 GET /api/v1/cars/{id}
 
-#### Example ID
-```json
-00000000-0000-0000-0000-000000000021
+#### Example ID: 
+```json 
+  00000000-0000-0000-0000-000000000021
 ```
+
 
 ```md
 ## Authentication
