@@ -8,7 +8,7 @@ The project includes authentication and authorization with JWT, scope-based acce
 ## Live Demo
 - [Swagger UI](https://car-import-service.onrender.com/swagger-ui/index.html)
 
-- ### Example
+- ### Example 1
 1. Get all makes:
 GET /api/v1/makes
 
@@ -19,6 +19,7 @@ Pageable example:
   "sort": ["name,asc"]
 }
 
+- ### Example 2
 2. Find car by id:
 GET /api/v1/cars/{id}
 
