@@ -5,6 +5,12 @@ Backend REST application for managing cars and importing car data from CSV files
 
 The project includes authentication and authorization with JWT, scope-based access control, and API documentation with Swagger.
 
+## Live Demo
+- [Swagger UI](https://car-import-service.onrender.com/swagger-ui/index.html)
+
+Public endpoints can be tested directly from Swagger.
+Protected endpoints require JWT Bearer token.
+
 ## Features
 - REST API for managing cars
 - CSV import for bulk car creation
@@ -20,7 +26,6 @@ The project includes authentication and authorization with JWT, scope-based acce
 - Java
 - Spring Boot
 - Spring Security
-- OAuth2 Resource Server
 - JWT
 - Auth0
 - Hibernate / JPA
