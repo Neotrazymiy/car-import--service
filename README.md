@@ -39,7 +39,7 @@ Example:
 Authorization: Bearer <your_token>
 ```
 
-№## Live Status
+### Live Status
 ⚠️ The application is hosted on Render (free tier), so the first request may take up to 30–60 seconds due to cold start.
 
 ## Features
