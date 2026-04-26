@@ -26,8 +26,3 @@ CREATE TABLE IF NOT EXISTS car_category (
 	CONSTRAINT fk_car_category_car FOREIGN KEY (car_id) REFERENCES car (id),
 	CONSTRAINT fk_car_category_make FOREIGN KEY (category_id) REFERENCES category (id)
 );
-
-DROP TABLE car_category;
-DROP TABLE car;
-DROP TABLE make;
-DROP TABLE category;
