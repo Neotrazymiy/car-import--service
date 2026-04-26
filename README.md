@@ -22,7 +22,7 @@ You can test public endpoints directly from Swagger.
 
 ## Example Requests
 
-### Get all makes:
+1. Get all makes:
 GET /api/v1/makes
 
 #### Pageable example
