@@ -8,16 +8,20 @@ The project includes authentication and authorization with JWT, scope-based acce
 ## Live Demo
 - [Swagger UI](https://car-import-service.onrender.com/swagger-ui/index.html)
 
+You can test public endpoints directly from Swagger.
+
 - ### Example
 1. Get all makes:
 GET /api/v1/makes
 
-Pageable example:
+#### Pageable example
+```json
 {
   "page": 0,
   "size": 2,
   "sort": ["name,asc"]
 }
+```
 
 2. Find car by id:
 GET /api/v1/cars/{id}
@@ -25,8 +29,18 @@ GET /api/v1/cars/{id}
 Example ID:
 00000000-0000-0000-0000-000000000021
 
-Public endpoints can be tested directly from Swagger.
-Protected endpoints require JWT Bearer token.
+```md
+## Authentication
+
+Protected endpoints require a JWT Bearer token from Auth0.
+
+Example:
+
+Authorization: Bearer <your_token>
+```
+
+№## Live Status
+⚠️ The application is hosted on Render (free tier), so the first request may take up to 30–60 seconds due to cold start.
 
 ## Features
 - REST API for managing cars
