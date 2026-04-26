@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.core.DelegatingOAuth2TokenValidator;
 import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.JwtDecoders;
+import org.springframework.security.oauth2.jwt.JwtDecoders; 
 import org.springframework.security.oauth2.jwt.JwtValidators;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 
@@ -36,17 +36,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeHttpRequests().antMatchers(HttpMethod.GET, "/api/**").permitAll()
 				.antMatchers("/webjars/**", "/login*", "/css/**", "/js/**", "/swagger-ui.html", "/swagger-ui/**",
 						"/v3/api-docs/**")
-				.permitAll().and().oauth2ResourceServer().jwt().decoder(jwtDecoder());
+				.permitAll().and();
+			//.oauth2ResourceServer().jwt().decoder(jwtDecoder());
 	}
 
-	@Bean
-	public JwtDecoder jwtDecoder() {
-		OAuth2TokenValidator<Jwt> withAudience = new AudienceValidator(audience);
-		OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
-		OAuth2TokenValidator<Jwt> validator = new DelegatingOAuth2TokenValidator<>(withAudience, withIssuer);
+	// @Bean
+	// public JwtDecoder jwtDecoder() {
+	// 	OAuth2TokenValidator<Jwt> withAudience = new AudienceValidator(audience);
+	// 	OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
+	// 	OAuth2TokenValidator<Jwt> validator = new DelegatingOAuth2TokenValidator<>(withAudience, withIssuer);
 
-		NimbusJwtDecoder jwtDecoder = JwtDecoders.fromOidcIssuerLocation(issuer);
-		jwtDecoder.setJwtValidator(validator);
-		return jwtDecoder;
-	}
+	// 	NimbusJwtDecoder jwtDecoder = JwtDecoders.fromOidcIssuerLocation(issuer);
+	// 	jwtDecoder.setJwtValidator(validator);
+	// 	return jwtDecoder;
+	// }
 }
