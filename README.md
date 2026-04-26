@@ -89,12 +89,24 @@ Swagger UI is available after starting the application locally.
 - Designing filtering and pagination for REST endpoints
 - Documenting APIs with Swagger
 
-## Quick Start
-1. Clone the repository
-2. Configure `application.properties`
-3. Set Auth0 configuration
-4. Create and configure PostgreSQL database
-5. Run the application with:
+## Quick Start (Docker)
 
+1. Clone the repository
+```bash
+git clone https://github.com/Neotrazymiy/car-import-service.git
+cd car-import-service
+```
+
+2. Start PostgreSQL using Docker:
+```bash
+docker-compose up -d
+```
+
+3. Run the application:
 ```bash
 mvn spring-boot:run
+```
+
+4. Open Swagger UI:
+http://localhost:8080/swagger-ui/index.html
+
