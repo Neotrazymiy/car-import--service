@@ -8,11 +8,11 @@ The project includes authentication and authorization with JWT, scope-based acce
 ```md
 ## Key Highlights
 
-- 🔐 JWT authentication with Auth0
-- 🛡 Scope-based authorization
-- 📂 CSV import for bulk operations
-- 📊 Filtering & pagination
-- 📄 Swagger API documentation
+- JWT authentication with Auth0
+- Scope-based authorization
+- CSV import for bulk operations
+- Filtering & pagination
+- Swagger API documentation
 ```
 
 ## Live Demo
